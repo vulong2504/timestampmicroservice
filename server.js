@@ -25,10 +25,15 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/timestamp",(req,res)=>{
-  res.json({unix: Date.now(),utc: new Date(25-12-201da
-    )})
+  res.json({unix: Date.now(),utc: new Date(Date.now()).toUTCString()})
 })
+app.get('/api/timestamp/:date_string',(req,res)=>{
+  const data=req.param.date_string
+  if(/\d{5,}/.test(data)) {
+    const num=Number(data)
+  }
 
+})
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
